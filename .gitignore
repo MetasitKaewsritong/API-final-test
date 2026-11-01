@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# ค่าลับ/ค่าเครื่อง (เก็บเฉพาะ .env.example)
+.env
+.env.*
+!.env.example
+
+# ผลรัน test / log
+coverage/
+*.log
+npm-debug.log*
+
+# ไฟล์ของระบบ/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ไฟล์ zip ที่แตกไว้แล้ว (มีโฟลเดอร์ practice/final-exam-setup อยู่แล้ว)
+*.zip
