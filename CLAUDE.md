@@ -55,7 +55,7 @@
 
 ## 4. แผนที่ไฟล์
 
-โฟลเดอร์นี้ (`API\final`) มีแค่ wk09–wk14 ส่วน wk05–wk07 (ที่ส่วนที่ 2 เปิดได้) อยู่ใน `..\midterm\`
+โฟลเดอร์นี้มี wk05–wk07 และ wk09–wk14 ครบในที่เดียว (อัปเดต 2026-11-02) พร้อม lab `wk09-lab.md`–`wk12-lab.md`
 
 | ไฟล์ | เนื้อหา |
 |---|---|
@@ -67,10 +67,9 @@
 | `wk13.md` | Monolith vs Microservices, Bounded Context, API Gateway, Sync/Async, Circuit Breaker |
 | `wk14.md` | Migration (Knex, up/down, Expand-Contract), Vertical/Horizontal Scaling, Load Balancer |
 | `wk14 (1).md` | **ซ้ำกับ `wk14.md` เป๊ะ** (ตรวจ hash แล้ว) ไม่ต้องอ่านซ้ำ |
-| `..\midterm\wk05.md` `wk06.md` `wk07.md` | Transaction / JWT+RBAC / Cache+Pagination+Versioning |
+| `wk05.md` `wk06.md` `wk07.md` | Transaction / JWT+RBAC / Cache+Pagination+Versioning |
 
-**ไฟล์ที่เอกสารอ้างถึงแต่ไม่มีในโฟลเดอร์:** `ref-jest-supertest.md`, `ref-swagger-newman.md`, `ref-axios.md`, `ref-zod.md`, `ref-express-rate-limit.md`, `ref-mysql2-knex.md`, `wk09-lab.md` … `wk12-lab.md`
-→ ถ้านิสิตมี ให้ใส่ไว้ใน `API\final\` (โดยเฉพาะ lab wk09–wk12 เพราะใกล้ภาคปฏิบัติที่สุด)
+**ไฟล์ที่เอกสารอ้างถึงแต่ไม่มีในโฟลเดอร์:** `ref-jest-supertest.md`, `ref-swagger-newman.md`, `ref-axios.md`, `ref-zod.md`, `ref-express-rate-limit.md`, `ref-mysql2-knex.md` (lab wk09–wk12 มีครบแล้ว)
 
 ### โปรเจกต์ซ้อมปฏิบัติ: `practice\final-exam-setup\` (แตกจาก `final-exam-setup.zip` แล้ว)
 - ระบบสั่งอาหาร: ตาราง `menu_items` (22 แถว, `available` boolean) · `orders` (`status` default `pending`) · `order_items` (FK → orders ON DELETE CASCADE, → menu_items)
@@ -99,11 +98,11 @@
 | rate limit | `wk12.md` §3.2 (config) · §3.4 (per user) |
 | migration | `wk14.md` §2.3 (เพิ่ม column) · §2.5 (Expand-Contract) |
 | API Gateway จำลอง | `wk13.md` §3.3 |
-| Transaction + `FOR UPDATE` | `..\midterm\wk05.md` §4.3 / §4.5 |
-| JWT + RBAC chaining | `..\midterm\wk06.md` §2.6, §4.2–4.3 |
-| cache-aside | `..\midterm\wk07.md` §2.2 |
-| pagination/filter/sort | `..\midterm\wk07.md` §4.2–4.5 |
-| versioning v1/v2 | `..\midterm\wk07.md` §5.3 |
+| Transaction + `FOR UPDATE` | `wk05.md` §4.3 / §4.5 |
+| JWT + RBAC chaining | `wk06.md` §2.6, §4.2–4.3 |
+| cache-aside | `wk07.md` §2.2 |
+| pagination/filter/sort | `wk07.md` §4.2–4.5 |
+| versioning v1/v2 | `wk07.md` §5.3 |
 
 ## 5. สิ่งที่นายต้องเข้าใจให้แม่น (Must-Know Core) — ตรวจจากเอกสารจริงแล้ว
 
@@ -247,43 +246,45 @@
 
 | # | หัวข้อย่อย | สถานะ | หมายเหตุ |
 |---|---|---|---|
-| 9.1 | Test Pyramid + AAA + matcher | ⬜ | |
-| 9.2 | `beforeEach` vs `beforeAll` | ⬜ | |
-| 9.3 | Supertest + แยก `app.js`/`server.js` | ⬜ | |
-| 9.4 | ปัญหา test ชน DB จริง + วิธีแก้ | ⬜ | |
-| 9.5 | Mocking (`jest.fn`, `jest.mock`, เมื่อไรควร/ไม่ควร) | ⬜ | |
-| 9.6 | Coverage (4 มิติ, 100% ≠ ดี) | ⬜ | |
-| 11.1 | Resilience + Axios + แยกประเภท error | ⬜ | |
-| 11.2 | Retry (ควร/ไม่ควร, backoff, jitter, thundering herd) | ⬜ | |
-| 11.3 | Timeout + คำนวณเวลารวม | ⬜ | |
-| 11.4 | Fallback | ⬜ | |
-| 11.5 | Webhook + HMAC + timingSafeEqual + replay | ⬜ | |
-| 12.1 | Zod: object / refine / superRefine / max / validate middleware | ⬜ | |
-| 12.2 | Rate Limiting vs Throttling + config | ⬜ | |
-| 12.3 | trust proxy / multi-instance / keyGenerator | ⬜ | |
-| 12.4 | ZAP + ตาราง OWASP:2025 | ⬜ | |
+| 9.1 | Test Pyramid + AAA + matcher | ✅ | 2026-11-02: เคยตอบ `toBe` กับ object ผิด → เช็กซ้ำแล้วผ่าน (primitive = `toBe`, object/array = `toEqual`) |
+| 9.2 | `beforeEach` vs `beforeAll` | ✅ | 2026-11-02: เลือกถูก แต่ตอบเหตุผลจากคำในโจทย์ + กลับทิศผลลัพธ์ (ได้ 2 ไม่ใช่ 1) → ย้ำ "ถามว่าเทสต์ก่อนทิ้งอะไรไว้" |
+| 9.3 | Supertest + แยก `app.js`/`server.js` | ✅ | 2026-11-02: ตอบ "ทำไมต้องแยก" เองไม่ได้ 2 รอบ → อธิบายเป็นลำดับเหตุการณ์ (import = รันไฟล์ = listen) แล้วเลือกข้อถูก · `res.status` = `toBe` ✅ |
+| 9.4 | ปัญหา test ชน DB จริง + วิธีแก้ | ✅ | 2026-11-02: ตอบถูกทั้ง 2 ข้อ (ซ้ำ/สะสม · ล้างด้วย `beforeAll`) ควรใส่ศัพท์ `UNIQUE` ในคำตอบ |
+| 9.5 | Mocking (`jest.fn`, `jest.mock`, เมื่อไรควร/ไม่ควร) | ✅ | 2026-11-02: `jest.mock`/`mockResolvedValue`/`[[]]` ผ่านหลังอธิบายซ้ำ (เคยตอบ "id") · ควร/ไม่ควร mock ตอบ ก,ก ผิด (คิดว่า mock ทุกอย่าง) → เช็กซ้ำผ่าน "mock = เราบอกคำตอบเอง จึงพิสูจน์ schema จริงไม่ได้" |
+| 9.6 | Coverage (4 มิติ, 100% ≠ ดี) | ✅ | 2026-11-02: ตอบไม่ได้รอบแรก → อุปมา รปภ. เดินตรวจ แล้วเลือกถูกทั้งคู่ (100% แต่ไม่ดี · Branch) |
+| 11.1 | Resilience + Axios + แยกประเภท error | ✅ | 2026-11-02: แยก error ถูก · "ทำไมต้อง resilience" ตอบวนซ้ำคำ → ต้องมีเหตุผล "คุมบริการภายนอกไม่ได้ + ไม่ให้ล่มตาม" |
+| 11.2 | Retry (ควร/ไม่ควร, backoff, jitter, thundering herd) | ✅ | 2026-11-02: ควร/ไม่ควร + นับครั้ง ถูก · นิยาม herd ขาดคำว่า "retry พร้อมกัน/ซ้ำเติมเซิร์ฟเวอร์" · เข้าใจว่า backoff ไม่พอ ต้อง jitter |
+| 11.3 | Timeout + คำนวณเวลารวม | ✅ | 2026-11-02: คำนวณถูก (5 วิ) · ผลเสียตอบแค่ "รอไม่รู้จบ" ขาด connection/memory ค้าง |
+| 11.4 | Fallback | ✅ | 2026-11-02: ตอบถูกทั้งคู่ (graceful degradation · cache เดิม) |
+| 11.5 | Webhook + HMAC + timingSafeEqual + replay | ✅ | 2026-11-02: สงสัยเรื่อง secret ไม่ผ่านเครือข่าย (แชร์ล่วงหน้า) · raw/timingSafeEqual/RangeError ถูก · replay ตอบไม่ได้รอบแรก → ผ่านหลังอธิบายเป็นขั้น |
+| 12.1 | Zod: object / refine / superRefine / max / validate middleware | ✅ | 2026-11-02: เคสสมัคร+role ตอบ "role escalation" (ต้องเป็น Mass assignment → A01) · ถามว่าต้องจำ OWASP ไหม → ให้จำ 6 คู่ตามอาการ · validate/safeParse งงรอบแรก → ผ่านหลังอธิบายใหม่ |
+| 12.2 | Rate Limiting vs Throttling + config | ✅ | 2026-11-02: ตอบถูกทั้งคู่ (429 · ปฏิเสธ vs หน่วง) |
+| 12.3 | trust proxy / multi-instance / keyGenerator | ✅ | 2026-11-02: trust proxy/หลาย process (15 ครั้ง) งงรอบแรก → ผ่านหลังอธิบายภาพ · ข้อ "ทำไม authenticateToken ก่อน limiter" ตอบสลับกับลำดับใน keyGenerator → ต้องย้ำ `req.user` ถูกใส่โดย authenticateToken |
+| 12.4 | ZAP + ตาราง OWASP:2025 | ✅ | 2026-11-02: ตอบไม่ได้รอบแรก → ผ่านแบบเลือกข้อ (ZAP ไม่ใช่การรับประกัน · rate limit = A07) · นิสิตขอให้ย่อการติวส่วนที่เหลือให้พอกับ usage |
 
 ### เฟส B — wk14, wk13, wk10 (ปรนัยเป็นหลัก)
 
 | # | หัวข้อย่อย | สถานะ | หมายเหตุ |
 |---|---|---|---|
-| 14.1 | Migration up/down + NOT NULL + Knex | ⬜ | |
-| 14.2 | Expand–Contract + production 6 ข้อ | ⬜ | |
-| 14.3 | Vertical vs Horizontal + stateless + DB connections/Read Replica | ⬜ | |
-| 14.4 | Load Balancer 3 แบบ + X-Forwarded-For | ⬜ | |
-| 13.1 | Monolith vs Microservices | ⬜ | |
-| 13.2 | Bounded Context / decomposition | ⬜ | |
-| 13.3 | API Gateway | ⬜ | |
-| 13.4 | Sync/Async + Eventual consistency + Circuit Breaker | ⬜ | |
-| 10.1 | DX + โครง OpenAPI + `$ref` | ⬜ | |
-| 10.2 | Swagger UI + ความปลอดภัย `/api-docs` | ⬜ | |
-| 10.3 | Postman / Newman / API-First | ⬜ | |
+| 14.1 | Migration up/down + NOT NULL + Knex | ✅ | 2026-11-02 (โหมดย่อ): ตอบไม่ได้รอบแรก → ผ่านแบบเลือกข้อ (NOT NULL ไร้ default = ล้ม) |
+| 14.2 | Expand–Contract + production 6 ข้อ | 🟡 | สอนแบบย่อ ยังไม่เช็ก — ทวนในข้อสอบจำลอง |
+| 14.3 | Vertical vs Horizontal + stateless + DB connections/Read Replica | ✅ | ผ่าน (instance × connectionLimit · replication lag) หลังอธิบายภาพ |
+| 14.4 | Load Balancer 3 แบบ + X-Forwarded-For | 🟡 | สอนแบบย่อ ยังไม่เช็ก — ทวนในข้อสอบจำลอง |
+| 13.1 | Monolith vs Microservices | ✅ | 2026-11-02 (โหมดย่อ) |
+| 13.2 | Bounded Context / decomposition | ✅ | ตอบถูก (แบ่งตามธุรกิจ ไม่ใช่ชั้นเทคนิค) |
+| 13.3 | API Gateway | 🟡 | **ผิด:** service-to-service ตอบว่า "ผ่าน Gateway" (ต้องเรียกตรง) → ใส่ข้อนี้ในข้อสอบจำลอง |
+| 13.4 | Sync/Async + Eventual consistency + Circuit Breaker | ✅ | async ผ่าน Broker ถูก · Circuit Breaker สอนแบบย่อ ยังไม่เช็ก |
+| 10.1 | DX + โครง OpenAPI + `$ref` | ✅ | 2026-11-02 (โหมดย่อ) เช็กถูก |
+| 10.2 | Swagger UI + ความปลอดภัย `/api-docs` | ✅ | เช็กถูก |
+| 10.3 | Postman / Newman / API-First | ✅ | เช็กถูก (Newman = black-box ภายนอก) |
+
+> **กติกาเพิ่ม (นิสิตสั่ง 2026-11-02):** จบแต่ละ week → เฉลย Q&A ท้ายบทใน `wkXX.md` ให้เองทันที ตอบกระชับ ไม่ต้องรอนิสิต
 
 ### เฟส C — ซ้อมสอบ
 
 | รายการ | สถานะ | หมายเหตุ |
 |---|---|---|
-| ปรนัยจำลอง 30 ข้อ (6 กลุ่ม × 5) | ⬜ | |
+| ปรนัยจำลอง (ย่อเหลือ 15 ข้อ) | ✅ | 2026-11-02: ได้ 11/15 (73%) · พลาด 4 ข้อ: `security: bearerAuth` (ตอบ tags) · API-First (ตอบ "โค้ดสั้นลง") · ข้อ "ไม่ควร retry" (ตอบ 503 ทั้งที่ควรเป็น 401 — อ่านคำปฏิเสธพลาด) · Circuit Breaker Open (ตอบสลับกับ Closed) |
 | เช็ค setup: `npm run check` + `npm test` ผ่าน 3 เทสต์ | ✅ | 2026-11-01: seed สำเร็จ · check พบเมนู 22 รายการ · Jest 3/3 ผ่าน (Node v24.18.0, Docker 29.6.1) |
 | ซ้อมเขียน Supertest 1 endpoint | ⬜ | |
 | ซ้อมอ่าน error Jest แล้วอธิบายสาเหตุเป็นประโยค | ⬜ | |
